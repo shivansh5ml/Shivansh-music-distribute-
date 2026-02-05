@@ -1,68 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Music Distribution</title>
+    <title>Shivansh Music - Professional Distribution</title>
     <style>
-        body { background: #0f0f0f; color: white; font-family: sans-serif; margin: 0; padding: 20px; text-align: center; }
-        .container { max-width: 600px; margin: auto; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #e91e63; }
-        h1 { color: #e91e63; }
-        .upload-section { margin-top: 30px; text-align: left; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input, select { width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: none; background: #2a2a2a; color: white; box-sizing: border-box; }
-        button { background: #e91e63; color: white; padding: 12px; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; }
-        button:hover { background: #c2185b; }
-        .status { margin-top: 15px; color: #4caf50; display: none; }
+        body { background: #0a0a0a; color: #eee; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; }
+        .container { max-width: 800px; margin: 20px auto; background: #161616; padding: 30px; border-radius: 15px; border-top: 5px solid #e91e63; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: #e91e63; text-align: center; margin-bottom: 5px; }
+        p.subtitle { text-align: center; color: #888; margin-bottom: 30px; }
+        .grid-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: #bbb; }
+        input, select { width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #333; background: #222; color: white; box-sizing: border-box; }
+        .full-width { grid-column: span 2; }
+        .upload-box { border: 2px dashed #333; padding: 20px; text-align: center; border-radius: 10px; margin-bottom: 20px; background: #1a1a1a; }
+        button { background: linear-gradient(45deg, #e91e63, #ff4081); color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 18px; font-weight: bold; margin-top: 10px; transition: 0.3s; }
+        button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4); }
+        hr { border: 0; border-top: 1px solid #333; margin: 20px 0; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Music Dashboard</h1>
-        <p>Welcome to Shivansh Music Distribution</p>
-        <hr style="border: 0.5px solid #333;">
+        <h1>Shivansh Music Distribution</h1>
+        <p class="subtitle">Global Music Release Dashboard</p>
 
-        <div class="upload-section">
-            <h3>Distribute New Music</h3>
-            
-            <label>Song Title</label>
-            <input type="text" id="songTitle" placeholder="Enter Song Name">
+        <div class="grid-section">
+            <div class="full-width"><h3>1. Song Information</h3></div>
+            <div>
+                <label>Song Title</label>
+                <input type="text" id="title" placeholder="e.g. Dil Bechar">
+            </div>
+            <div>
+                <label>Version (Remix/Original)</label>
+                <input type="text" id="version" placeholder="e.g. Radio Edit">
+            </div>
 
-            <label>Artist Name</label>
-            <input type="text" id="artistName" placeholder="Main Artist Name">
+            <div class="full-width"><hr><h3>2. Artist & Credits</h3></div>
+            <div>
+                <label>Main Artist</label>
+                <input type="text" id="artist" placeholder="Primary Artist Name">
+            </div>
+            <div>
+                <label>Featured Artist</label>
+                <input type="text" id="feat" placeholder="Optional">
+            </div>
+            <div>
+                <label>Music Producer</label>
+                <input type="text" id="producer" placeholder="Produced By">
+            </div>
+            <div>
+                <label>Lyricist (Writer)</label>
+                <input type="text" id="lyricist" placeholder="Written By">
+            </div>
 
-            <label>Genre</label>
-            <select id="genre">
-                <option value="pop">Pop</option>
-                <option value="hiphop">Hip Hop</option>
-                <option value="classical">Classical</option>
-                <option value="folk">Folk / Regional</option>
-            </select>
+            <div class="full-width"><hr><h3>3. Metadata & Rights</h3></div>
+            <div>
+                <label>Record Label</label>
+                <input type="text" id="label" placeholder="Shivansh Music Distribute">
+            </div>
+            <div>
+                <label>Primary Genre</label>
+                <select id="genre">
+                    <option>Pop</option>
+                    <option>Bhojpuri</option>
+                    <option>Hip Hop</option>
+                    <option>Devotional</option>
+                    <option>Romantic</option>
+                </select>
+            </div>
 
-            <label>Select Audio File (MP3/WAV)</label>
-            <input type="file" id="audioFile" accept="audio/*">
+            <div class="full-width"><hr><h3>4. Media Files</h3></div>
+            <div class="upload-box">
+                <label>Audio File (WAV Recommended)</label>
+                <input type="file" id="audio" accept="audio/*">
+            </div>
+            <div class="upload-box">
+                <label>Cover Art (3000x3000px)</label>
+                <input type="file" id="cover" accept="image/*">
+            </div>
 
-            <label>Select Cover Art (JPG/PNG)</label>
-            <input type="file" id="coverArt" accept="image/*">
-
-            <button onclick="submitMusic()">Submit for Distribution</button>
-            <p id="statusMsg" class="status">Processing... Your music is being submitted!</p>
+            <div class="full-width">
+                <button onclick="distributeMusic()">Submit to All Platforms</button>
+            </div>
         </div>
     </div>
 
     <script>
-        function submitMusic() {
-            const title = document.getElementById('songTitle').value;
-            const status = document.getElementById('statusMsg');
-
-            if(title === "") {
-                alert("Please enter the Song Title!");
-            } else {
-                status.style.display = "block";
-                alert("Success! " + title + " has been sent for distribution.");
-                // Yahan aage ki processing add ho sakti hai
+        function distributeMusic() {
+            const song = document.getElementById('title').value;
+            if(!song) {
+                alert("Please enter Song Title!");
+                return;
             }
+            alert("Success! '" + song + "' details saved. Now connect Firebase to receive files.");
         }
     </script>
 
