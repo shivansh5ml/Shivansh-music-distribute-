@@ -2,84 +2,79 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Shivansh Global Music + MCN Platform</title>
+<title>Shivansh Global Music MCN Platform</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body{margin:0;font-family:Arial;background:#0f172a;color:#e5e7eb}
+body{margin:0;font-family:Segoe UI;background:#020617;color:#e5e7eb}
 header{background:#7c3aed;padding:20px;text-align:center}
-nav button{margin:5px;padding:10px;border:none;border-radius:6px;background:#22c55e;color:#000;font-weight:bold;cursor:pointer}
+nav button{margin:4px;padding:10px;border:none;border-radius:6px;background:#22c55e;color:#000;font-weight:600}
 section{display:none;padding:20px}
 section.active{display:block}
-.box{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:15px;margin:15px 0}
-input,textarea{width:100%;padding:10px;margin:5px 0;border-radius:5px;border:none}
-button{padding:10px 15px;border:none;border-radius:5px;background:#3b82f6;color:#fff;cursor:pointer}
-footer{text-align:center;padding:10px;background:#020617;color:#9ca3af}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.card{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:15px}
+input,textarea{width:100%;padding:10px;margin:5px 0;border-radius:6px;border:none}
+button{padding:10px;border:none;border-radius:6px;background:#3b82f6;color:#fff}
+audio{width:100%}
+footer{text-align:center;padding:10px;color:#9ca3af}
 </style>
 </head>
 <body>
 
 <header>
-<h1>🎵 Shivansh Global Music + MCN Creator Platform</h1>
+<h1>🌍 Shivansh Global Music + MCN Network</h1>
 <nav>
 <button onclick="show('home')">Home</button>
-<button onclick="show('login')">Login</button>
+<button onclick="show('discover')">Discover</button>
+<button onclick="show('artists')">Artists</button>
 <button onclick="show('dashboard')">Dashboard</button>
 <button onclick="show('upload')">Upload</button>
-<button onclick="show('profile')">Profile</button>
-<button onclick="show('monetize')">Monetize</button>
+<button onclick="show('earn')">Earnings</button>
+<button onclick="show('admin')">Admin</button>
 </nav>
 </header>
 
 <section id="home" class="active">
-<div class="box">
-<h2>Welcome Creators 🚀</h2>
-<p>Free + Legal + Original MCN & Music Platform for Global Artists.</p>
+<div class="card">
+<h2>Welcome to Global Music MCN</h2>
+<p>Artists • Creators • Labels • Monetization • Distribution</p>
 </div>
 </section>
 
-<section id="login">
-<div class="box">
-<h2>Login / Signup</h2>
-<input id="user" placeholder="Username">
-<input id="pass" type="password" placeholder="Password">
-<button onclick="login()">Login</button>
-</div>
+<section id="discover">
+<h2>🎧 Discover Music</h2>
+<div class="grid" id="musicList"></div>
+</section>
+
+<section id="artists">
+<h2>🎤 Featured Artists</h2>
+<div class="grid" id="artistList"></div>
 </section>
 
 <section id="dashboard">
-<div class="box">
+<div class="card">
 <h2>Creator Dashboard</h2>
-<p id="welcome"></p>
+<p id="dashText">Login to see analytics</p>
 <ul>
-<li>Music Distribution</li>
-<li>Revenue Analytics</li>
-<li>Copyright Tools</li>
-<li>AI Lyrics + Promo</li>
+<li>Total Songs: <span id="songCount">0</span></li>
+<li>Total Plays: <span id="plays">0</span></li>
+<li>Estimated Earnings: ₹<span id="money">0</span></li>
 </ul>
 </div>
 </section>
 
 <section id="upload">
-<div class="box">
-<h2>Upload Music</h2>
-<input type="file">
-<textarea placeholder="Song Description"></textarea>
-<button>Upload</button>
+<div class="card">
+<h2>Upload Song</h2>
+<input id="artistName" placeholder="Artist Name">
+<input id="songTitle" placeholder="Song Title">
+<input id="songFile" type="file">
+<button onclick="uploadSong()">Upload</button>
 </div>
 </section>
 
-<section id="profile">
-<div class="box">
-<h2>Artist Profile</h2>
-<input placeholder="Artist Name">
-<textarea placeholder="Bio"></textarea>
-<button>Save Profile</button>
-</div>
-</section>
-
-<section id="monetize">
-<div class="box">
-<h2>Monetization</h2>
+<section id="earn">
+<div class="card">
+<h2>💰 Monetization Panel</h2>
 <ul>
 <li>Ads Revenue</li>
 <li>Brand Deals</li>
@@ -88,21 +83,45 @@ footer{text-align:center;padding:10px;background:#020617;color:#9ca3af}
 </div>
 </section>
 
-<footer>
-© 2026 Shivansh Creator Platform – Built for Artists 🌍
-</footer>
+<section id="admin">
+<div class="card">
+<h2>🛠 Admin Panel</h2>
+<p>Manage Artists • Songs • Revenue</p>
+</div>
+</section>
+
+<footer>© 2026 Shivansh Global Music MCN</footer>
 
 <script>
+let songs=[];
+let artists=[];
 function show(id){
 document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
 }
-function login(){
-let u=document.getElementById('user').value;
-if(u){
-document.getElementById('welcome').innerText="Welcome, "+u+" 🎉";
-show('dashboard');
-}else{alert("Enter Username")}
+function uploadSong(){
+let a=document.getElementById('artistName').value;
+let t=document.getElementById('songTitle').value;
+if(!a||!t){alert("Fill all fields");return;}
+songs.push({artist:a,title:t,plays:Math.floor(Math.random()*1000)});
+if(!artists.includes(a))artists.push(a);
+render();
+alert("Song Uploaded (Demo)");
+}
+function render(){
+let ml=document.getElementById('musicList');
+ml.innerHTML="";
+songs.forEach(s=>{
+ml.innerHTML+=`<div class="card"><b>${s.title}</b><p>${s.artist}</p><audio controls></audio></div>`;
+});
+let al=document.getElementById('artistList');
+al.innerHTML="";
+artists.forEach(a=>{
+al.innerHTML+=`<div class="card"><h3>${a}</h3><p>Global Artist</p></div>`;
+});
+document.getElementById('songCount').innerText=songs.length;
+document.getElementById('plays').innerText=songs.reduce((p,c)=>p+c.plays,0);
+document.getElementById('money').innerText=(songs.length*50);
 }
 </script>
 
