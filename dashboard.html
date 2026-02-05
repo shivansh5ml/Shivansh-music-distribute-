@@ -1,142 +1,109 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivansh Music - Professional Global Distribution</title>
-    <style>
-        :root { --primary: #e91e63; --bg: #0d0d0d; --card: #1a1a1a; --text: #ffffff; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        .header { background: var(--card); padding: 15px; text-align: center; border-bottom: 2px solid var(--primary); }
-        .container { max-width: 900px; margin: 20px auto; padding: 20px; }
-        .form-section { background: var(--card); padding: 25px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        h2 { color: var(--primary); border-left: 4px solid var(--primary); padding-left: 10px; font-size: 20px; margin-bottom: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        label { display: block; margin-bottom: 8px; color: #bbb; font-size: 14px; }
-        input, select, textarea { width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #333; background: #252525; color: white; box-sizing: border-box; outline: none; }
-        input:focus { border-color: var(--primary); }
-        .upload-area { border: 2px dashed #444; padding: 30px; text-align: center; border-radius: 10px; cursor: pointer; transition: 0.3s; }
-        .upload-area:hover { border-color: var(--primary); background: #222; }
-        .btn-submit { background: linear-gradient(to right, #e91e63, #ad1457); color: white; border: none; padding: 18px; width: 100%; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; text-transform: uppercase; }
-        .btn-submit:hover { opacity: 0.9; transform: scale(1.01); }
-        hr { border: 0; border-top: 1px solid #333; margin: 25px 0; }
-    </style>
+<meta charset="UTF-8">
+<title>Shivansh Global Music + MCN Platform</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;font-family:Arial;background:#0f172a;color:#e5e7eb}
+header{background:#7c3aed;padding:20px;text-align:center}
+nav button{margin:5px;padding:10px;border:none;border-radius:6px;background:#22c55e;color:#000;font-weight:bold;cursor:pointer}
+section{display:none;padding:20px}
+section.active{display:block}
+.box{background:#020617;border:1px solid #1e293b;border-radius:10px;padding:15px;margin:15px 0}
+input,textarea{width:100%;padding:10px;margin:5px 0;border-radius:5px;border:none}
+button{padding:10px 15px;border:none;border-radius:5px;background:#3b82f6;color:#fff;cursor:pointer}
+footer{text-align:center;padding:10px;background:#020617;color:#9ca3af}
+</style>
 </head>
 <body>
 
-<div class="header">
-    <h1 style="margin:0; font-size: 24px;">SHIVANSH MUSIC DISTRIBUTE</h1>
+<header>
+<h1>🎵 Shivansh Global Music + MCN Creator Platform</h1>
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('login')">Login</button>
+<button onclick="show('dashboard')">Dashboard</button>
+<button onclick="show('upload')">Upload</button>
+<button onclick="show('profile')">Profile</button>
+<button onclick="show('monetize')">Monetize</button>
+</nav>
+</header>
+
+<section id="home" class="active">
+<div class="box">
+<h2>Welcome Creators 🚀</h2>
+<p>Free + Legal + Original MCN & Music Platform for Global Artists.</p>
 </div>
+</section>
 
-<div class="container">
-    <div class="form-section">
-        <h2>1. Basic Album / Single Information</h2>
-        <div class="grid">
-            <div>
-                <label>Release Title (Song Name)</label>
-                <input type="text" id="trackTitle" placeholder="Enter Song Name">
-            </div>
-            <div>
-                <label>Version</label>
-                <select id="version">
-                    <option>Original Mix</option>
-                    <option>Remix</option>
-                    <option>Radio Edit</option>
-                    <option>Live Version</option>
-                </select>
-            </div>
-            <div>
-                <label>Primary Genre</label>
-                <select id="genre">
-                    <option>Bhojpuri</option>
-                    <option>Pop</option>
-                    <option>Folk</option>
-                    <option>Devotional</option>
-                    <option>Hip Hop</option>
-                </select>
-            </div>
-            <div>
-                <label>Language of Content</label>
-                <select id="language">
-                    <option>Hindi</option>
-                    <option>Bhojpuri</option>
-                    <option>Maithili</option>
-                    <option>English</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-section">
-        <h2>2. Artist Credits (Main & Behind the Scenes)</h2>
-        <div class="grid">
-            <div>
-                <label>Main Artist</label>
-                <input type="text" id="mainArtist" placeholder="Primary Singer Name">
-            </div>
-            <div>
-                <label>Featuring Artist</label>
-                <input type="text" id="featArtist" placeholder="Optional">
-            </div>
-            <div>
-                <label>Music Producer</label>
-                <input type="text" id="producer" placeholder="Music Director Name">
-            </div>
-            <div>
-                <label>Lyricist (Writer)</label>
-                <input type="text" id="lyricist" placeholder="Writer Name">
-            </div>
-            <div>
-                <label>Composer</label>
-                <input type="text" id="composer" placeholder="Who composed the tune">
-            </div>
-            <div>
-                <label>Record Label</label>
-                <input type="text" id="label" value="Shivansh Music Distribute">
-            </div>
-        </div>
-    </div>
-
-    <div class="form-section">
-        <h2>3. Assets & Scheduling</h2>
-        <div class="grid">
-            <div>
-                <label>Release Date (Live On)</label>
-                <input type="date" id="releaseDate">
-            </div>
-            <div>
-                <label>ISRC Code (If you have one)</label>
-                <input type="text" id="isrc" placeholder="Optional (e.g. IN-XXX-XX-XXXXX)">
-            </div>
-        </div>
-        <hr>
-        <div class="grid">
-            <div class="upload-area">
-                <label style="color:white; cursor:pointer;">📁 Upload Audio (WAV 16-Bit/44.1kHz)</label>
-                <input type="file" id="audioFile" accept=".wav,.mp3" style="margin-top:10px;">
-            </div>
-            <div class="upload-area">
-                <label style="color:white; cursor:pointer;">🖼️ Upload Cover Art (3000x3000px)</label>
-                <input type="file" id="coverArt" accept="image/*" style="margin-top:10px;">
-            </div>
-        </div>
-    </div>
-
-    <button class="btn-submit" onclick="startDistribution()">Submit for Global Distribution</button>
+<section id="login">
+<div class="box">
+<h2>Login / Signup</h2>
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
 </div>
+</section>
+
+<section id="dashboard">
+<div class="box">
+<h2>Creator Dashboard</h2>
+<p id="welcome"></p>
+<ul>
+<li>Music Distribution</li>
+<li>Revenue Analytics</li>
+<li>Copyright Tools</li>
+<li>AI Lyrics + Promo</li>
+</ul>
+</div>
+</section>
+
+<section id="upload">
+<div class="box">
+<h2>Upload Music</h2>
+<input type="file">
+<textarea placeholder="Song Description"></textarea>
+<button>Upload</button>
+</div>
+</section>
+
+<section id="profile">
+<div class="box">
+<h2>Artist Profile</h2>
+<input placeholder="Artist Name">
+<textarea placeholder="Bio"></textarea>
+<button>Save Profile</button>
+</div>
+</section>
+
+<section id="monetize">
+<div class="box">
+<h2>Monetization</h2>
+<ul>
+<li>Ads Revenue</li>
+<li>Brand Deals</li>
+<li>Premium Tools</li>
+</ul>
+</div>
+</section>
+
+<footer>
+© 2026 Shivansh Creator Platform – Built for Artists 🌍
+</footer>
 
 <script>
-    function startDistribution() {
-        const song = document.getElementById('trackTitle').value;
-        const artist = document.getElementById('mainArtist').value;
-        
-        if(!song || !artist) {
-            alert("Bhai, kam se kam Song Name aur Artist Name toh daalo!");
-        } else {
-            alert("Congratulations! '" + song + "' by " + artist + " is being processed for distribution.");
-            // Next step: Yahan Firebase ka code lagega
-        }
-    }
+function show(id){
+document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+function login(){
+let u=document.getElementById('user').value;
+if(u){
+document.getElementById('welcome').innerText="Welcome, "+u+" 🎉";
+show('dashboard');
+}else{alert("Enter Username")}
+}
 </script>
 
 </body>
